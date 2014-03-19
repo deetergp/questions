@@ -1,5 +1,11 @@
 Questions = new Meteor.Collection("Questions");
 
+var getCurrentEmail = function () {
+  return Meteor.user() &&
+    Meteor.user().emails &&
+    Meteor.user().emails[0].address;
+};
+
 if (Meteor.isClient) {
   Template.questions.allQuestions = function () {
     return Questions.find();
