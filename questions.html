@@ -1,16 +1,24 @@
+<!--
+  This file is taken from a Intro To Meteor talk given by Naomi Seyfer at
+  https://www.meteor.com/learn-meteor. I have made some minor changes and added
+  some inline comments.
+-->
+
 <head>
   <title>questions</title>
 </head>
 
 <body>
+  <!-- Pulls in the window from the "accounts-ui" package. -->
   {{loginButtons}}
   <div class="container-fluid">
+  <!-- Pulls in the "questions" template. -->
   {{> questions}}
   </div>
 </body>
 
 <template name="questions">
-  <!-- Form only displays to  logged in users. -->
+  <!-- Display form if Template.questions.userId(). -->
   {{#if userId}}
   <h1>Ask a question</h1>
   <form class="form-compact">
@@ -19,12 +27,13 @@
   </form>
   {{/if}}
 
-  <!-- List shows for all/anonymous users. -->
+  <!-- Display returns from Template.questions.allQuestions(). -->
   {{# each allQuestions}}
   <h3>
     <!-- The field names from the "allQuestions" template function. -->
     {{question}}
     {{score}}
+    <!-- Display arrow if Template.questions.showArrow() returns true. -->
     {{#if showArrow}}
     <a class="vote">&uarr;</a>
     {{/if}}
