@@ -1,6 +1,6 @@
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
-    return "Welcome to questions.";
+    return Session.get('greeting') || "Welcome to questions.";
   };
 
   Template.hello.events({
