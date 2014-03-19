@@ -57,6 +57,12 @@ if (Meteor.isServer) {
         return false;
       }
       return true;
+    },
+    update: function (userId, doc, fieldNames, modifier) {
+      return _.isEqual(modifier, {
+        $inc: {score: 1},
+        $addToSet: {votes: Meteor.userId()}
+      });
     }
   });
 }
