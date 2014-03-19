@@ -4,16 +4,18 @@
 
 <body>
   {{loginButtons}}
+  <div class="container-fluid">
   {{> questions}}
+  </div>
 </body>
 
 <template name="questions">
   <!-- Form only displays to  logged in users. -->
   {{#if userId}}
   <h1>Ask a question</h1>
-  <form>
+  <form class="form-compact">
     <input type="text" id="questionText" />
-    <input type="submit" id="questionAsk" value="Ask"/>
+    <input type="submit" id="questionAsk" class="btn" value="Ask"/>
   </form>
   {{/if}}
 
