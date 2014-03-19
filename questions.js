@@ -16,7 +16,9 @@ if (Meteor.isClient) {
       var question = templ.find('#questionText').value;
       Questions.insert({
         question: question,
-        score: 1
+        score: 1,
+        email: getCurrentEmail(),
+        votes: [Meteor.userId()]
       });
     }
   });

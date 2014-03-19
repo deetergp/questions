@@ -15,8 +15,10 @@
   </form>
   {{# each allQuestions}}
   <h3>
+    <!-- The field names from the "allQuestions" template function. -->
     {{question}}
     {{score}}
   </h3>
+  <p>{{email}}</p>
   {{/each}}
 </template>
