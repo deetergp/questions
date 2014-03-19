@@ -43,3 +43,20 @@ if (Meteor.isClient) {
     }
   });
 }
+
+if (Meteor.isServer) {
+  Questions.allow({
+    insert: function (userId, doc) {
+      if(! _.isEqual(doc.votes, [userId])) {
+        return false;
+      }
+      if(!doc.email || !doc.question) {
+        return false;
+      }
+      if(doc.score !== 1) {
+        return false;
+      }
+      return true;
+    }
+  });
+}
