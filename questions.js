@@ -36,7 +36,7 @@ if (Meteor.isClient) {
 
   // This function handles all of the events for the "questions" template.
   Template.questions.events({
-    'submit form': function (evt, templ) {
+    'submit form': function (evnt, templ) {
       var question = templ.find('#questionText').value;
       Questions.insert({
         question: question,
@@ -45,7 +45,7 @@ if (Meteor.isClient) {
         votes: [Meteor.userId()]
       });
     },
-    'click .vote': function (evt, templ) {
+    'click .vote': function (evnt, templ) {
       Questions.update(this._id, {
         $inc: {score: 1},
         $addToSet: {votes: Meteor.userId()}
