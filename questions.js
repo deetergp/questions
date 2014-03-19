@@ -1,3 +1,5 @@
+Questions = new Meteor.Collection("Questions");
+
 if (Meteor.isClient) {
   Template.hello.greeting = function () {
     return Session.get('greeting') || "Welcome to questions.";
@@ -9,11 +11,5 @@ if (Meteor.isClient) {
       if (typeof console !== 'undefined')
         console.log("You pressed the button");
     }
-  });
-}
-
-if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
   });
 }
