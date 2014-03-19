@@ -8,7 +8,9 @@ var getCurrentEmail = function () {
 
 if (Meteor.isClient) {
   Template.questions.allQuestions = function () {
-    return Questions.find();
+    return Questions.find({}, {
+      sort: {score: -1}
+    });
   };
 
   // Returns true only if a user is logged in.
