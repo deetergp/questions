@@ -23,6 +23,9 @@
     <!-- The field names from the "allQuestions" template function. -->
     {{question}}
     {{score}}
+    {{#if showArrow}}
+    <a class="vote">&uarr;</a>
+    {{/if}}
   </h3>
   <p>{{email}}</p>
   {{/each}}

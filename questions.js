@@ -16,6 +16,13 @@ if (Meteor.isClient) {
     return Meteor.userId();
   };
 
+  // Only return true if logged in and the the votes for this question does NOT
+  // contain the current userId.
+  Template.questions.showArrow = function () {
+    return Meteor.userId() &&
+      ! _.contains(this.votes, Meteor.userId());
+  };
+
   Template.questions.events({
     'submit form': function (evt, templ) {
       var question = templ.find('#questionText').value;
@@ -24,6 +31,12 @@ if (Meteor.isClient) {
         score: 1,
         email: getCurrentEmail(),
         votes: [Meteor.userId()]
+      });
+    },
+    'click .vote': function (evt, templ) {
+      Questions.update(this._id, {
+        $inc: {score: 1},
+        $addToSet: {votes: Meteor.userId()}
       });
     }
   });
