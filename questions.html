@@ -3,8 +3,16 @@
 </head>
 
 <body>
-  {{> hello}}
+  {{> questions}}
 </body>
+
+<template name="questions">
+  <h1>Ask a question</h1>
+  <form>
+    <input type="text" id="questionText"></input>
+    <input type="submit" id="questionAsk" value="Ask"></input>
+  </form>
+</template>
 
 <template name="hello">
   <h1>Hello World!</h1>
