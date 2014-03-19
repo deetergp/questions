@@ -11,6 +11,11 @@ if (Meteor.isClient) {
     return Questions.find();
   };
 
+  // Returns true only if a user is logged in.
+  Template.questions.userId = function () {
+    return Meteor.userId();
+  };
+
   Template.questions.events({
     'submit form': function (evt, templ) {
       var question = templ.find('#questionText').value;

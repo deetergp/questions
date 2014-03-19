@@ -8,11 +8,16 @@
 </body>
 
 <template name="questions">
+  <!-- Form only displays to  logged in users. -->
+  {{#if userId}}
   <h1>Ask a question</h1>
   <form>
     <input type="text" id="questionText" />
     <input type="submit" id="questionAsk" value="Ask"/>
   </form>
+  {{/if}}
+
+  <!-- List shows for all/anonymous users. -->
   {{# each allQuestions}}
   <h3>
     <!-- The field names from the "allQuestions" template function. -->
